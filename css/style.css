@@ -1,0 +1,115 @@
+body {
+    background-color: aliceblue;
+    font-family: Arial, sans-serif;
+    overflow-y: scroll;
+    height: 100%;
+}
+
+#characterCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ensure the canvas is behind all content */
+}
+
+a {
+    color: inherit; /* blue colors for links too */
+    text-decoration: none; /* no underline */
+    border-radius: 25px;
+    border: 1px black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 1%;
+
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+h1 {
+  font-family: "Spectral", serif;
+  font-weight: 400;
+  font-style: normal;
+    font-size: 2.3rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+    font-family: "Spectral", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h3 {
+    margin-top: 2rem;
+    font-size: 1.8rem;
+    font-family: "Spectral", serif;
+
+}
+
+
+  
+.spectral-regular {
+    font-family: "Handjet", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.fixed-button {
+    position: fixed;
+    right: 20px; /* Adjust distance from the right edge */
+    bottom: 20px; /* Adjust distance from the bottom edge */
+    padding: 10px 20px;
+    background-color: transparent; /* Button background color */
+    color: black;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    z-index: 1000; /* Ensure it's above other content */
+    
+}
+
+.fixed-button:hover {
+    text-decoration: underline;
+}
+
+.centered-left {
+    text-align: left; /* Center the text */
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners */
+    margin-bottom: 2%;
+}
+
+.centered-left img {
+    max-width: 70%; /* Ensure image doesn't overflow */
+    height: auto;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+        font-family: "Spectral", serif;
+
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        font-family: "Spectral", serif;
+
+    }
+}

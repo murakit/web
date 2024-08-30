@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>muri web</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" integrity="sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js" integrity="sha512-X/YkDZyjTf4wyc2Vy16YGCPHwAY8rZJY+POgokZjQB2mhIRFJCckEGc6YyX9eNsPfn0PzThEuNs+uaomE5CO6A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="css/style.css"> <!-- Link to your CSS file -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet"></head>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&display=swap" rel="stylesheet">
+<body>
+    <canvas id="characterCanvas"></canvas>
+
+    <div class="row mx-0"> <!-- Resets the margin -->
+        <div class="col-6 offset-1" style="margin-top:10%">
+                <h1 class="spectral-regular"> murakit</h1>
+            </div>
+        </div>
+
+            <div class="row mx-0"> <!-- Resets the margin -->
+             <div class="col-6 offset-1" style="margin-top:3%">
+                <p><strong><a href="https://www.artsy.net/artist/murakiit" class="random-color-link"><i>Artsy</i></a></strong></p><br>
+                <p><strong>NFTs:</strong></p>
+                <p>❀Foundation:<a href="https://foundation.app/@murakita" class="random-color-link" target="_blank"> @murakita</a></p>
+                <br><p>🦢OBJKT:<a href="https://objkt.com/users/tz1gco4NpGMANYj3BLHbWuqFEXwwgnD6XtGb" class="random-color-link" target="_blank"> @murakit</a></p>
+                <br><p>ʚɞZora:<a href="https://zora.co/@muripixel" class="random-color-link" target="_blank"> @muripixel</a></p>
+                <br>
+                <p><strong>Socials:</strong></p>
+                <p>♡IG: <a href="https://www.instagram.com/murakiit/" class="random-color-link" target="_blank">@murakiit</a> <a href="https://www.instagram.com/muri.pixel/" class="random-color-link"> @muri.pixel</a></p>
+                <p><br>𐙚X: <a href="https://x.com/murakiit" class="random-color-link" target="_blank" >@murakiit</a></p>
+                <p><br><a href="mailto:murakit.2006@gmail.com" class="random-color-link" target="_blank">🍓murakit.2006@gmail.com</a></p><br>
+         
+            </div>
+            </div>
+
+            <br>
+            <div class="row justify-content-left">
+                <div class="col-md-5  offset-1">
+                    <div class="centered-left">
+                        <img id="randomImage" src="" alt="Random Image">
+                                <p id="randomText"></p>
+                            </div>
+                        </div>
+            </div>
+            
+            <div class="row mx-0"> <!-- Resets the margin -->
+                <div class="col-6 offset-1" style="margin-top:0%">
+                <br><p>Artista multidisciplinaria y diseñadora en medios digitales.<br> Basada en Ciudad de México.</p>
+                <p><br>Multidisciplinary artist and digital media designer. <br>Based in Mexico City. </p>
+                <br><p><strong> CV:</strong></p>
+                <p><a href="cv.html"class="random-color-link"><i>Español</i></a><br><br><i><a href="eng.html"class="random-color-link">English</i></a></p><br>
+                <br>
+                <br><br><br><br>
+            </div>
+      
+        </div>
+
+    <script>
+
+        const canvas = document.getElementById('characterCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const characters = "༘ෆ♡ᴥ✩✧ྀི".split(""); // Split characters into an array
+        const numberOfCharacters = 40; // Adjust for more or fewer characters
+
+        // Random color generator
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        // Create a character object
+        function createCharacter() {
+            return {
+                text: characters[Math.floor(Math.random() * characters.length)], // Random character
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                speed: Math.random() * 0.1 + 0.3, // Speed of falling
+                fontSize: Math.random() * 10 + 40, // Random font size
+                color: getRandomColor() // Random color
+            };
+        }
+
+        const characterArray = [];
+        for (let i = 0; i < numberOfCharacters; i++) {
+            characterArray.push(createCharacter());
+        }
+
+        // Update character position
+        function updateCharacter(character) {
+            character.y += character.speed;
+            if (character.y > canvas.height) {
+                character.y = -character.fontSize;
+                character.x = Math.random() * canvas.width;
+                character.color = getRandomColor(); // Change color when resetting position
+            }
+            ctx.font = `${character.fontSize}px Arial`;
+            ctx.fillStyle = character.color; // Set the color for the character
+            ctx.fillText(character.text, character.x, character.y);
+        }
+
+        // Animation loop
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            characterArray.forEach(updateCharacter);
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        // Adjust canvas size on window resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+
+
+    </script>
+
+<script>
+    // Function to generate a random color
+    function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
+    // Get all elements with the class 'random-color-link'
+    const links = document.querySelectorAll('.random-color-link');
+
+    // Add event listeners to each link
+    links.forEach(link => {
+        link.addEventListener('mouseover', function() {
+            link.style.backgroundColor = getRandomColor();
+        });
+
+        link.addEventListener('mouseout', function() {
+            link.style.backgroundColor = '';
+        });
+    });
+</script>
+
+
+<script>
+    // Array of images and corresponding texts
+    const imagesAndTexts = [
+        { image: 'documentacion/DV_SAUNA_FUJI400_MJUR1-08824-005A.jpg', text: 'Visuales para Sauna Disco, 2024.' },
+        { image: 'documentacion/DSC_0028.jpg', text: 'Quantum Kitten en Yassified Club, 2024.' },
+        { image: 'documentacion/DSC_0023.jpg', text: 'Quantum Kitten en Yassified Club, 2024' },
+        { image: 'documentacion/DV_SAUNA_FUJI400_MJUR1-08824-008A.jpg', text: 'Quantum Kitten en Yassified Club, 2024' },
+        { image: 'documentacion/DSC04899.jpg', text: 'Music Live Performance at Playa in Killscreen, 2024.' },
+        { image: 'documentacion/MURIKIT_AQUA_PIXELS.jpg', text: 'Aqua Pixel at Playa in Killscreen, 2024.' },
+        { image: 'documentacion/MURIKIT_INFINITE_RANDOM.jpg', text: 'Aqua Pixel at Playa, 2024.' },
+        { image: 'documentacion/MURIKIT_MUÑOZ_TEAL.jpg', text: 'Aqua Pixel, Playa, 2024.' },
+
+        // Add more image-text pairs as needed
+    ];
+
+    // Function to get a random image-text pair
+    function getRandomPair() {
+        const randomIndex = Math.floor(Math.random() * imagesAndTexts.length);
+        return imagesAndTexts[randomIndex];
+    }
+
+    // Get random image-text pair
+    const randomPair = getRandomPair();
+
+    // Set the image source and text content
+    document.getElementById('randomImage').src = randomPair.image;
+    document.getElementById('randomText').innerHTML = `<em>${randomPair.text}</em>`;
+
+</script>
+
+</body>
+</html>
