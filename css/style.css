@@ -9,8 +9,8 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 80%;
-    height: 80%;
+    width: 100%;
+    height: 100%;
     z-index: -1; /* Ensure the canvas is behind all content */
 }
 
@@ -68,8 +68,8 @@ h3 {
     position: fixed;
     right: 20px; /* Adjust distance from the right edge */
     bottom: 20px; /* Adjust distance from the bottom edge */
-    padding: 10px 20px;
-    background-color: transparent; /* Button background color */
+    padding: 5px 10px;
+    background-color: skyblue; /* Button background color */
     color: black;
     border: none;
     border-radius: 25px;
